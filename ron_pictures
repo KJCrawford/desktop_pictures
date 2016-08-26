@@ -65,7 +65,7 @@ def get_picture(url, picture_page):
     image_info_soup = picture_soup.find('div',{'id':'gsContent'})
 
     # picture_name = image_info_soup.find('img')['alt']
-    new_file_name = picture_soup.find('div',{'class':'block-core-BreadCrumb'}).get_text().replace('\n\n','->').replace('\n','').replace('->Albums->')
+    new_file_name = picture_soup.find('div',{'class':'block-core-BreadCrumb'}).get_text().replace('\n\n','->').replace('\n','').replace('->Albums->','')
     print(new_file_name)
 
 
@@ -126,5 +126,15 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    unhappy_with_picture = True
+    while unhappy_with_picture:
+        main()
+        new_answer = input('Do you want a new picture?: ') + ' '
+        if new_answer[0] == 'y':
+            pass
+        else:
+            unhappy_with_picture = False
+
+
+
     # check_picture()
